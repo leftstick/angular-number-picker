@@ -5,6 +5,8 @@ A directive used for picking number by using up/down button, instead of typing
 
 ![](https://raw.githubusercontent.com/leftstick/angular-number-picker/master/docs/img/demo.png)
 
+Try it: [plunker](http://plnkr.co/edit/BrojZhv8fZIS0XLJEeO9?p=preview)
+
 
 ## Requirement ##
 
