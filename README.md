@@ -1,7 +1,9 @@
 # angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.0.0-green.svg?style=flat) #
 =====================
 
-A directive used for picking number by using up/down button, instead of typing
+A directive used for picking number by using up/down button, instead of typing.
+
+This is an `angular` directive designed in `mobile-first` concept. Which means you would have better user experience while in mobile development. 
 
 ![](https://raw.githubusercontent.com/leftstick/angular-number-picker/master/docs/img/demo.png)
 
@@ -72,6 +74,11 @@ The wrapper class for `+-` operator
 ### `btn btn-default form-control` ###
 
 The wrapper class for the number area at the center
+
+### `active` ###
+
+The `active` class will be added to the `input-group-addon` button, while touching them. So it's possible to implement your own behavior.
+
 
 > It's easy to implement those classes to achieve your own UI
 
