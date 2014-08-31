@@ -14,7 +14,7 @@ Try it: [plunker](http://plnkr.co/edit/BrojZhv8fZIS0XLJEeO9?p=preview)
 
 ## UI dependency(optional) ##
 
-- [bootstrapjs](http://getbootstrap.com) (3.2.0+)
+- [bootstrap](http://getbootstrap.com) (3.2.0+)
 
 ## Install ##
 
