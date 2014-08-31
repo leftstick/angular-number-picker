@@ -1,0 +1,12 @@
+span[disabled]
+{
+    pointer-events: none;
+    cursor: default;
+    background-color: #eee;
+    opacity: 1;
+}
+
+.input-group-addon.active{
+    color: #fff;
+    background-color: #007aff;
+}
