@@ -4,4 +4,5 @@ node_modules/
 
 #demo
 demo/angular-number-picker.js
+demo/angular-number-picker.min.js
 demo/bower/
