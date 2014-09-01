@@ -1,9 +1,11 @@
-# angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.0.0-green.svg?style=flat) #
+# angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.0.1-green.svg?style=flat) #
 =====================
 
-A directive used for picking number by using up/down button, instead of typing.
+A directive used for picking number by using -/+ button, instead of typing the number directly.
 
-This is an `angular` directive designed in `mobile-first` concept. Which means you would have better user experience while in mobile development. 
+This is an `angular` directive designed in `mobile-first` concept. Which means you would have better user experience while in mobile development.
+
+> While running on mobile device, you would increase/decrease the number continuously by long tap the -/+ button.
 
 ![](https://raw.githubusercontent.com/leftstick/angular-number-picker/master/docs/img/demo.png)
 
@@ -71,7 +73,7 @@ The wrapper class for the `h-number` element
 
 The wrapper class for `+-` operator
 
-### `btn btn-default form-control` ###
+### `form-control` ###
 
 The wrapper class for the number area at the center
 

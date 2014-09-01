@@ -79,7 +79,7 @@
                 'max': '@',
                 'step': '@'
             },
-            link: function($scope, element, attrs) {
+            link: function($scope, element) {
 
                 var opts = assign({
                     min: $scope.min,
@@ -160,7 +160,7 @@
                 });
 
             },
-            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">&nbsp;&nbsp;-&nbsp;&nbsp;</span><button class="btn btn-default form-control">{{ value }}</button><span class="input-group-addon" type="up" ng-disabled="!canUp">&nbsp;&nbsp;+&nbsp;&nbsp;</span></div>'
+            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">&nbsp;&nbsp;-&nbsp;&nbsp;</span><span class="form-control">{{ value }}</span><span class="input-group-addon" type="up" ng-disabled="!canUp">&nbsp;&nbsp;+&nbsp;&nbsp;</span></div>'
         };
     };
 
