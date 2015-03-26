@@ -62,6 +62,8 @@ demo.controller('DemoController', ['$scope', function($scope) {
 | min | Number | No | The minimal point to limit the operation. 0 by default |
 | max | Number | No | The maximum point to limit the operation. 100 by default |
 | step | Number | No | The step value for the operation. 1 by default|
+| singular | String | No | Label to be included after value when value is 1|
+| plural | String | No | Label to be included after value when value is not 1|
 
 ## build-in class ##
 
