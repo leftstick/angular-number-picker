@@ -75,6 +75,8 @@
             restrict: 'E',
             scope: {
                 'value': '=',
+                'singular': '@',
+                'plural': '@',
                 'min': '@',
                 'max': '@',
                 'step': '@'
@@ -160,7 +162,7 @@
                 });
 
             },
-            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">&nbsp;&nbsp;-&nbsp;&nbsp;</span><label class="form-control">{{ value }}</label><span class="input-group-addon" type="up" ng-disabled="!canUp">&nbsp;&nbsp;+&nbsp;&nbsp;</span></div>'
+            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">&nbsp;&nbsp;-&nbsp;&nbsp;</span><label class="form-control">{{ value }} {{value === 1 ? singular : plural}}</label><span class="input-group-addon" type="up" ng-disabled="!canUp">&nbsp;&nbsp;+&nbsp;&nbsp;</span></div>'
         };
     };
 
