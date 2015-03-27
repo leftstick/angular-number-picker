@@ -1,4 +1,4 @@
-# angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.0.2-green.svg?style=flat) #
+# angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.1.0-green.svg?style=flat) #
 =====================
 
 A directive used for picking number by using -/+ button, instead of typing the number directly.
