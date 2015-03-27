@@ -9,7 +9,7 @@ This is an `angular` directive designed in `mobile-first` concept. Which means y
 
 ![](https://raw.githubusercontent.com/leftstick/angular-number-picker/master/docs/img/demo.png)
 
-Try it: [plunker](http://plnkr.co/edit/BrojZhv8fZIS0XLJEeO9?p=preview)
+Try it: [plunker](http://plnkr.co/edit/Aww1cb785mZIPqNHgZ4v?p=preview)
 
 
 ## Requirement ##
