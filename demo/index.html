@@ -17,7 +17,7 @@
                     <div ng-controller="DemoController" style="text-align:center;">
                         
                         <div class="container">
-                            <h-number value="input.num" singular="car" plural="cars" min="1" max="10" step="1"></h-number>
+                            <h-number value="input.num" singular="car" plural="cars" min="1" max="10" step="1" change="onChange()"></h-number>
                             <br/>
                             <button class="btn btn-primary" ng-click="getNumber()">Get Number</button>
                         </div>

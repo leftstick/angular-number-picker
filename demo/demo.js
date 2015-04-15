@@ -12,4 +12,8 @@ demo.controller('DemoController', ['$scope', function($scope) {
             alert('The number is: [' + $scope.input.num + ']');
         };
 
+        $scope.onChange = function() {
+            console.log('number changed', $scope.input.num);  
+        };
+
 }]);

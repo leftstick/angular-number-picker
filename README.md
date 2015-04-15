@@ -1,4 +1,4 @@
-# angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.1.1-green.svg?style=flat) #
+# angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.2.0-green.svg?style=flat) #
 =====================
 
 A directive used for picking number by using -/+ button, instead of typing the number directly.
@@ -38,7 +38,7 @@ var demo = angular.module('demo', ['angularNumberPicker']);
 - Use `h-number` tag in your html
 ```HTML
 <div ng-controller="DemoController">
-    <h-number value="input.num" min="2" max="10" step="1"></h-number>
+    <h-number value="input.num" min="2" max="10" step="1" change="onChanged()"></h-number>
 </div>
 ```
 - Writing `DemoController`
@@ -50,6 +50,10 @@ demo.controller('DemoController', ['$scope', function($scope) {
 
    $scope.getNumber = function() {
        alert('The number is: [' + $scope.input.num + ']');
+   };
+
+   $scope.onChange = function(){
+       console.log('The number is Changed ', $scope.input.num);
    };
 }]);
 ``` 
@@ -64,6 +68,7 @@ demo.controller('DemoController', ['$scope', function($scope) {
 | step | Number | No | The step value for the operation. 1 by default|
 | singular | String | No | Label to be included after value when value is 1|
 | plural | String | No | Label to be included after value when value is not 1|
+| change | Function | No | Function to be called while number is changed|
 
 ## build-in class ##
 

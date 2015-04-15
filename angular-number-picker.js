@@ -6,10 +6,10 @@
  *
  *  usage:
  *
- *       <h-number value="input.num" min="1" max="10" step="1"></h-number>
+ *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
  *
  *  @author  Howard.Zuo
- *  @date    Aug 31th, 2014
+ *  @date    Apr 15th, 2015
  *
  */
 (function(angular) {
@@ -79,7 +79,8 @@
                 'plural': '@',
                 'min': '@',
                 'max': '@',
-                'step': '@'
+                'step': '@',
+                'change': '&'
             },
             link: function($scope, element) {
 
@@ -115,6 +116,7 @@
                         }
                         $scope.value -= opts.step;
                     }
+                    $scope.change();
                 };
 
                 var timeoutPro, intervalPro;
