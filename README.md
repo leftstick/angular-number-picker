@@ -4,6 +4,8 @@
 [![NPM version][npm-image]][npm-url]
 ![][david-url]
 ![](http://img.shields.io/badge/bower_module-v1.2.1-green.svg?style=flat)
+
+
 A directive used for picking number by using -/+ button, instead of typing the number directly.
 
 This is an `angular` directive designed in `mobile-first` concept. Which means you would have better user experience while in mobile development.
