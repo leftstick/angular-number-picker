@@ -1,6 +1,6 @@
 {
   "name": "angular-number-picker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "homepage": "https://github.com/leftstick/angular-number-picker",
   "description": "A directive used for picking number by using up/down button, instead of typing",
   "keywords": [
@@ -10,8 +10,7 @@
   ],
   "files": [
     "angular-number-picker.js",
-    "angular-number-picker.min.js",
-    "angular-number-picker.min.js.map"
+    "angular-number-picker.min.js"
   ],
   "authors": [
     "Howard.Zuo"
@@ -27,7 +26,7 @@
     "docs"
   ],
   "devDependencies": {
-    "angular": "~1.2.23",
-    "bootstrap": "~3.2.0"
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5"
   }
 }

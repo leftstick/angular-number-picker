@@ -7,7 +7,7 @@ var copyhAuto = function() {
     gulp.src('./angular-number-picker.min.js').pipe(gulp.dest('./demo/'));
 };
 
-gulp.task('demo', ['default'], function(cons) {
+gulp.task('dev', ['dist'], function(cons) {
     var webserver = require('gulp-webserver');
     copyhAuto();
     gulp.watch('./angular-number-picker.js', function() {
@@ -27,17 +27,12 @@ gulp.task('demo', ['default'], function(cons) {
 });
 
 
-gulp.task('default', function() {
+gulp.task('dist', function() {
     var rename = require('gulp-rename');
     var uglify = require('gulp-uglify');
-    var sourcemaps = require('gulp-sourcemaps');
 
     return gulp.src('./angular-number-picker.js')
-        .pipe(sourcemaps.init())
-        .pipe(rename({
-            extname: '.min.js'
-        }))
+        .pipe(rename({extname: '.min.js'}))
         .pipe(uglify())
-        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./'));
 });

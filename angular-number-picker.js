@@ -9,168 +9,176 @@
  *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
  *
  *  @author  Howard.Zuo
- *  @date    Apr 15th, 2015
+ *  @date    July 22th, 2015
  *
  */
-(function(angular) {
+(function(global) {
     'use strict';
 
-    var defaults = {
-        min: 0,
-        max: 100,
-        step: 1,
-        timeout: 600
-    };
+    var definition = function(angular) {
 
-    var assign = function(dest, src) {
-        for (var key in src) {
-            if (!dest[key]) {
-                dest[key] = src[key];
+        var defaults = {
+            min: 0,
+            max: 100,
+            step: 1,
+            timeout: 600
+        };
+
+        var assign = function(dest, src) {
+            for (var key in src) {
+                if (!dest[key]) {
+                    dest[key] = src[key];
+                }
             }
-        }
-        return dest;
-    };
+            return dest;
+        };
 
-    var isNumber = function(value) {
-        var val = Number(value);
-        return !isNaN(val) && val == value;
-    };
+        var isNumber = function(value) {
+            var val = Number(value);
+            return !isNaN(val) && val == value;
+        };
 
-    var toNumber = function(value) {
-        return Number(value);
-    };
+        var toNumber = function(value) {
+            return Number(value);
+        };
 
-    var checkNumber = function(value) {
-        if (!isNumber(value)) {
-            throw new Error('value [' + value + '] is not a valid number');
-        }
-    };
+        var checkNumber = function(value) {
+            if (!isNumber(value)) {
+                throw new Error('value [' + value + '] is not a valid number');
+            }
+        };
 
-    var getTarget = function(e) {
-        if (e.touches && e.touches.length > 0) {
-            return angular.element(e.touches[0].target);
-        }
-        return angular.element(e.target);
-    };
+        var getTarget = function(e) {
+            if (e.touches && e.touches.length > 0) {
+                return angular.element(e.touches[0].target);
+            }
+            return angular.element(e.target);
+        };
 
-    var getType = function(e) {
-        return getTarget(e).attr('type');
-    };
+        var getType = function(e) {
+            return getTarget(e).attr('type');
+        };
 
-    var transform = function(opts) {
-        for (var key in opts) {
-            var value = opts[key];
-            opts[key] = toNumber(value);
-        }
-    };
+        var transform = function(opts) {
+            for (var key in opts) {
+                var value = opts[key];
+                opts[key] = toNumber(value);
+            }
+        };
 
+        var directive = function($timeout, $interval) {
 
-    var moduleName = 'angularNumberPicker';
+            return {
+                restrict: 'E',
+                scope: {
+                    'value': '=',
+                    'singular': '@',
+                    'plural': '@',
+                    'min': '@',
+                    'max': '@',
+                    'step': '@',
+                    'change': '&'
+                },
+                link: function($scope, element) {
 
-    var module = angular.module(moduleName, []);
+                    var opts = assign({
+                        min: $scope.min,
+                        max: $scope.max,
+                        step: $scope.step
+                    }, defaults);
 
-    var directive = function($timeout, $interval) {
+                    checkNumber(opts.min);
+                    checkNumber(opts.max);
+                    checkNumber(opts.step);
 
-        return {
-            restrict: 'E',
-            scope: {
-                'value': '=',
-                'singular': '@',
-                'plural': '@',
-                'min': '@',
-                'max': '@',
-                'step': '@',
-                'change': '&'
-            },
-            link: function($scope, element) {
+                    transform(opts);
 
-                var opts = assign({
-                    min: $scope.min,
-                    max: $scope.max,
-                    step: $scope.step
-                }, defaults);
+                    $scope.value = opts.min;
 
-                checkNumber(opts.min);
-                checkNumber(opts.max);
-                checkNumber(opts.step);
+                    $scope.$watch('value', function(newValue) {
+                        $scope.canDown = newValue > opts.min;
+                        $scope.canUp = newValue < opts.max;
+                    });
 
-                transform(opts);
-
-                $scope.value = opts.min;
-
-                $scope.$watch('value', function(newValue) {
-                    $scope.canDown = newValue > opts.min;
-                    $scope.canUp = newValue < opts.max;
-                });
-
-                var changeNumber = function($event) {
-                    var type = getType($event);
-                    if ('up' === type) {
-                        if ($scope.value >= opts.max) {
-                            return;
+                    var changeNumber = function($event) {
+                        var type = getType($event);
+                        if ('up' === type) {
+                            if ($scope.value >= opts.max) {
+                                return;
+                            }
+                            $scope.value += opts.step;
+                        } else if ('down' === type) {
+                            if ($scope.value <= opts.min) {
+                                return;
+                            }
+                            $scope.value -= opts.step;
                         }
-                        $scope.value += opts.step;
-                    } else if ('down' === type) {
-                        if ($scope.value <= opts.min) {
-                            return;
-                        }
-                        $scope.value -= opts.step;
-                    }
-                    $scope.change();
-                };
+                        $scope.change();
+                    };
 
-                var timeoutPro, intervalPro;
-                var start, end;
-                var addon = element.find('span');
+                    var timeoutPro;
+                    var intervalPro;
+                    var start;
+                    var end;
+                    var addon = element.find('span');
 
-                addon.on('click', function(e) {
+                    addon.on('click', function(e) {
 
-                    changeNumber(e);
-                    $scope.$apply();
-                    e.stopPropagation();
-
-                });
-
-                addon.on('touchstart', function(e) {
-                    getTarget(e).addClass('active');
-                    start = new Date().getTime();
-                    timeoutPro = $timeout(function() {
-                        intervalPro = $interval(function() {
-                            changeNumber(e);
-                        }, 200);
-                    }, opts.timeout);
-                    e.preventDefault();
-                });
-
-                addon.on('touchend', function(e) {
-                    end = new Date().getTime();
-                    if (intervalPro) {
-                        $interval.cancel(intervalPro);
-                        intervalPro = undefined;
-                    }
-                    if (timeoutPro) {
-                        $timeout.cancel(timeoutPro);
-                        timeoutPro = undefined;
-                    }
-                    if ((end - start) < opts.timeout) {
                         changeNumber(e);
                         $scope.$apply();
-                    }
-                    getTarget(e).removeClass('active');
-                });
+                        e.stopPropagation();
 
-                $scope.$on('$destroy', function() {
-                    addon.off('touchstart touchend click');
-                });
+                    });
 
-            },
-            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">&nbsp;&nbsp;-&nbsp;&nbsp;</span><label class="form-control">{{ value }} {{value === 1 ? singular : plural}}</label><span class="input-group-addon" type="up" ng-disabled="!canUp">&nbsp;&nbsp;+&nbsp;&nbsp;</span></div>'
+                    addon.on('touchstart', function(e) {
+                        getTarget(e).addClass('active');
+                        start = new Date().getTime();
+                        timeoutPro = $timeout(function() {
+                            intervalPro = $interval(function() {
+                                changeNumber(e);
+                            }, 200);
+                        }, opts.timeout);
+                        e.preventDefault();
+                    });
+
+                    addon.on('touchend', function(e) {
+                        end = new Date().getTime();
+                        if (intervalPro) {
+                            $interval.cancel(intervalPro);
+                            intervalPro = undefined;
+                        }
+                        if (timeoutPro) {
+                            $timeout.cancel(timeoutPro);
+                            timeoutPro = undefined;
+                        }
+                        if ((end - start) < opts.timeout) {
+                            changeNumber(e);
+                            $scope.$apply();
+                        }
+                        getTarget(e).removeClass('active');
+                    });
+
+                    $scope.$on('$destroy', function() {
+                        addon.off('touchstart touchend click');
+                    });
+
+                },
+                template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">&nbsp;&nbsp;-&nbsp;&nbsp;</span><label class="form-control">{{ value }} {{value === 1 ? singular : plural}}</label><span class="input-group-addon" type="up" ng-disabled="!canUp">&nbsp;&nbsp;+&nbsp;&nbsp;</span></div>'
+            };
         };
+
+        var name = 'angularNumberPicker';
+        angular.module(name, [])
+            .directive('hNumber', ['$timeout', '$interval', directive]);
+        return name;
     };
 
+    if (typeof exports === 'object') {
+        module.exports = definition(require('angular'));
+    } else if (typeof define === 'function' && define.amd) {
+        define(['angular'], definition);
+    } else {
+        definition(global.angular);
+    }
 
-    module.directive('hNumber', ['$timeout', '$interval', directive]);
-
-
-
-}(angular));
+}(window));

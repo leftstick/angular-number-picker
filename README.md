@@ -1,4 +1,4 @@
-# angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.2.0-green.svg?style=flat) #
+# angular-number-picker  ![](http://img.shields.io/badge/bower_module-v1.2.1-green.svg?style=flat) #
 =====================
 
 A directive used for picking number by using -/+ button, instead of typing the number directly.
@@ -14,11 +14,11 @@ Try it: [plunker](http://plnkr.co/edit/Aww1cb785mZIPqNHgZ4v?p=preview)
 
 ## Requirement ##
 
-- [angularjs](http://angularjs.org/) (1.2.0+)
+- [angularjs](http://angularjs.org/) (1.4.3+)
 
 ## UI dependency(optional) ##
 
-- [bootstrap](http://getbootstrap.com) (3.2.0+)
+- [bootstrap](http://getbootstrap.com) (3.3.5+)
 
 ## Install ##
 
@@ -56,7 +56,7 @@ demo.controller('DemoController', ['$scope', function($scope) {
        console.log('The number is Changed ', $scope.input.num);
    };
 }]);
-``` 
+```
 
 ## `h-number` configuration ##
 
@@ -113,7 +113,5 @@ gulp demo
 ## LICENSE ##
 
 [MIT License](https://raw.githubusercontent.com/leftstick/angular-number-picker/master/LICENSE)
-
-
 
 [expression]: https://docs.angularjs.org/guide/expression
