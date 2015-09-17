@@ -9,7 +9,7 @@
  *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
  *
  *  @author  Howard.Zuo
- *  @date    July 22th, 2015
+ *  @date    Sep 17th, 2015
  *
  */
 (function(global) {
@@ -93,7 +93,9 @@
 
                     transform(opts);
 
-                    $scope.value = opts.min;
+                    if (opts.min > $scope.value) {
+                        $scope.value = opts.min;
+                    }
 
                     $scope.$watch('value', function(newValue) {
                         $scope.canDown = newValue > opts.min;
@@ -113,7 +115,6 @@
                             }
                             $scope.value -= opts.step;
                         }
-                        $scope.change();
                     };
 
                     var timeoutPro;
@@ -123,11 +124,10 @@
                     var addon = element.find('span');
 
                     addon.on('click', function(e) {
-
                         changeNumber(e);
                         $scope.$apply();
+                        $scope.change();
                         e.stopPropagation();
-
                     });
 
                     addon.on('touchstart', function(e) {
@@ -136,6 +136,7 @@
                         timeoutPro = $timeout(function() {
                             intervalPro = $interval(function() {
                                 changeNumber(e);
+                                $scope.change();
                             }, 200);
                         }, opts.timeout);
                         e.preventDefault();
@@ -154,6 +155,7 @@
                         if ((end - start) < opts.timeout) {
                             changeNumber(e);
                             $scope.$apply();
+                            $scope.change();
                         }
                         getTarget(e).removeClass('active');
                     });

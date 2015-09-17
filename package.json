@@ -1,6 +1,6 @@
 {
   "name": "angular-number-picker",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "./angular-number-picker.js",
   "description": "A directive used for picking number by using up/down button, instead of typing",
   "repository": {
