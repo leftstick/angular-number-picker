@@ -1,9 +1,9 @@
 # angular-number-picker #
 =====================
 
+![][bower-url]
 [![NPM version][npm-image]][npm-url]
 ![][david-url]
-![](http://img.shields.io/badge/bower_module-v1.2.2-green.svg?style=flat)
 
 
 A directive used for picking number by using -/+ button, instead of typing the number directly.
@@ -25,11 +25,18 @@ Try it: [plunker](http://plnkr.co/edit/Aww1cb785mZIPqNHgZ4v?p=preview)
 
 - [bootstrap](http://getbootstrap.com) (3.3.5+)
 
-## Install ##
+## Install from bower ##
 
 ```JavaScript
 bower install angular-number-picker --save
 ```
+
+## Install from npm ##
+
+```JavaScript
+npm install angular-number-picker --save
+```
+
 ## Basic Usage ##
 
 - Include `angular-number-picker.js` into your `index.html` by using `script` tag, or you have other way to import dependency(For example: requirejs), like following:
@@ -119,7 +126,9 @@ gulp demo
 
 [MIT License](https://raw.githubusercontent.com/leftstick/angular-number-picker/master/LICENSE)
 
+
 [expression]: https://docs.angularjs.org/guide/expression
+[bower-url]: https://img.shields.io/bower/v/angular-number-picker.svg
 [npm-url]: https://npmjs.org/package/angular-number-picker
 [npm-image]: https://badge.fury.io/js/angular-number-picker.png
 [david-url]: https://david-dm.org/leftstick/angular-number-picker.png

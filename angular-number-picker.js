@@ -9,7 +9,7 @@
  *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
  *
  *  @author  Howard.Zuo
- *  @date    Sep 17th, 2015
+ *  @date    Dec 10th, 2015
  *
  */
 (function(global) {
@@ -158,6 +158,7 @@
                             $scope.change();
                         }
                         getTarget(e).removeClass('active');
+                        e.stopPropagation();
                     });
 
                     $scope.$on('$destroy', function() {
