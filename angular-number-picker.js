@@ -9,7 +9,7 @@
  *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
  *
  *  @author  Howard.Zuo
- *  @date    Dec 10th, 2015
+ *  @date    Dec 25th, 2015
  *
  */
 (function(global) {
@@ -117,6 +117,7 @@
                         }
                     };
 
+                    var isPressing;
                     var timeoutPro;
                     var intervalPro;
                     var start;
@@ -131,6 +132,10 @@
                     });
 
                     addon.on('touchstart', function(e) {
+                        if (isPressing) {
+                            return;
+                        }
+                        isPressing = true;
                         getTarget(e).addClass('active');
                         start = new Date().getTime();
                         timeoutPro = $timeout(function() {
@@ -159,6 +164,7 @@
                         }
                         getTarget(e).removeClass('active');
                         e.stopPropagation();
+                        isPressing = false;
                     });
 
                     $scope.$on('$destroy', function() {
