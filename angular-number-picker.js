@@ -97,10 +97,13 @@
                         $scope.value = opts.min;
                     }
 
-                    $scope.$watch('value', function(newValue) {
+                    $scope.$watch('value', function(newValue, oldValue) {
                         $scope.canDown = newValue > opts.min;
                         $scope.canUp = newValue < opts.max;
-                        $scope.change();
+
+                        if(newValue != oldValue){
+                            $scope.change();
+                        }
                     });
 
                     var changeNumber = function($event) {
