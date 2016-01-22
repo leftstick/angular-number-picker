@@ -100,6 +100,7 @@
                     $scope.$watch('value', function(newValue) {
                         $scope.canDown = newValue > opts.min;
                         $scope.canUp = newValue < opts.max;
+                        $scope.change();
                     });
 
                     var changeNumber = function($event) {
@@ -127,7 +128,6 @@
                     addon.on('click', function(e) {
                         changeNumber(e);
                         $scope.$apply();
-                        $scope.change();
                         e.stopPropagation();
                     });
 
@@ -141,7 +141,6 @@
                         timeoutPro = $timeout(function() {
                             intervalPro = $interval(function() {
                                 changeNumber(e);
-                                $scope.change();
                             }, 200);
                         }, opts.timeout);
                         e.preventDefault();
@@ -160,7 +159,6 @@
                         if ((end - start) < opts.timeout) {
                             changeNumber(e);
                             $scope.$apply();
-                            $scope.change();
                         }
                         getTarget(e).removeClass('active');
                         e.stopPropagation();
