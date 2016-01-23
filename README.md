@@ -4,6 +4,8 @@
 ![][bower-url]
 [![NPM version][npm-image]][npm-url]
 ![][david-url]
+![][dt-url]
+![][license-url]
 
 
 A directive used for picking number by using -/+ button, instead of typing the number directly.
@@ -132,3 +134,5 @@ gulp demo
 [npm-url]: https://npmjs.org/package/angular-number-picker
 [npm-image]: https://badge.fury.io/js/angular-number-picker.png
 [david-url]: https://david-dm.org/leftstick/angular-number-picker.png
+[dt-url]:https://img.shields.io/npm/dt/angular-number-picker.svg
+[license-url]:https://img.shields.io/npm/l/angular-number-picker.svg

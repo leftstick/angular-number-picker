@@ -9,7 +9,7 @@
  *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
  *
  *  @author  Howard.Zuo
- *  @date    Dec 25th, 2015
+ *  @date    Jan 23th, 2016
  *
  */
 (function(global) {
@@ -101,7 +101,7 @@
                         $scope.canDown = newValue > opts.min;
                         $scope.canUp = newValue < opts.max;
 
-                        if(newValue != oldValue){
+                        if (newValue !== oldValue) {
                             $scope.change();
                         }
                     });

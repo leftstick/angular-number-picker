@@ -1,6 +1,6 @@
 {
   "name": "angular-number-picker",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "./angular-number-picker.js",
   "description": "A directive used for picking number by using up/down button, instead of typing",
   "repository": {
@@ -23,9 +23,5 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.1",
     "gulp-webserver": "^0.9.1"
-  },
-  "dependencies": {
-    "angular": "^1.4.3",
-    "bootstrap": "^3.3.5"
   }
 }
