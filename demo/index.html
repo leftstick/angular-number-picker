@@ -15,18 +15,18 @@
                 <div class="panel-heading">Demo</div>
                 <div class="panel-body">
                     <div ng-controller="DemoController" style="text-align:center;">
-                        
+
                         <div class="container">
-                            <h-number value="input.num" singular="car" plural="cars" min="1" max="10" step="1" change="onChange()"></h-number>
+                            <h-number value="input.num" singular="car" plural="cars" min="1" max="10" step="4" change="onChange()"></h-number>
                             <br/>
                             <button class="btn btn-primary" ng-click="getNumber()">Get Number</button>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <script type="text/javascript" src="bower/angular/angular.min.js"></script>
         <script type="text/javascript" src="angular-number-picker.js"></script>
         <script type="text/javascript" src="demo.js"></script>

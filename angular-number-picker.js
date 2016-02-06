@@ -9,7 +9,7 @@
  *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
  *
  *  @author  Howard.Zuo
- *  @date    Jan 23th, 2016
+ *  @date    Feb 6th, 2016
  *
  */
 (function(global) {
@@ -113,11 +113,17 @@
                                 return;
                             }
                             $scope.value += opts.step;
+                            if ($scope.value > opts.max) {
+                                $scope.value = opts.max;
+                            }
                         } else if ('down' === type) {
                             if ($scope.value <= opts.min) {
                                 return;
                             }
                             $scope.value -= opts.step;
+                            if ($scope.value < opts.min) {
+                                $scope.value = opts.min;
+                            }
                         }
                     };
 
