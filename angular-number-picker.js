@@ -35,7 +35,7 @@
 
         var isNumber = function(value) {
             var val = Number(value);
-            return !isNaN(val) && val == value;
+            return !isNaN(val) && val === value;
         };
 
         var toNumber = function(value) {
@@ -71,13 +71,13 @@
             return {
                 restrict: 'E',
                 scope: {
-                    'value': '=',
-                    'singular': '@',
-                    'plural': '@',
-                    'min': '@',
-                    'max': '@',
-                    'step': '@',
-                    'change': '&'
+                    value: '=',
+                    singular: '@',
+                    plural: '@',
+                    min: '@',
+                    max: '@',
+                    step: '@',
+                    change: '&'
                 },
                 link: function($scope, element) {
 
@@ -108,7 +108,7 @@
 
                     var changeNumber = function($event) {
                         var type = getType($event);
-                        if ('up' === type) {
+                        if (type === 'up') {
                             if ($scope.value >= opts.max) {
                                 return;
                             }
@@ -116,7 +116,7 @@
                             if ($scope.value > opts.max) {
                                 $scope.value = opts.max;
                             }
-                        } else if ('down' === type) {
+                        } else if (type === 'down') {
                             if ($scope.value <= opts.min) {
                                 return;
                             }
