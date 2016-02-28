@@ -189,7 +189,7 @@
         return name;
     };
 
-    if (typeof exports === 'object') {
+    if (typeof exports === 'object' && require) {
         module.exports = definition(require('angular'));
     } else if (typeof define === 'function' && define.amd) {
         define(['angular'], definition);
