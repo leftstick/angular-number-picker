@@ -27,36 +27,70 @@ Try it: [plunker](http://plnkr.co/edit/Aww1cb785mZIPqNHgZ4v?p=preview)
 
 - [bootstrap](http://getbootstrap.com) (3.3.5+)
 
-## Install from bower ##
+## Installation ##
+
+### via bower ###
 
 ```JavaScript
 bower install angular-number-picker --save
 ```
 
-## Install from npm ##
+### via npm ###
 
 ```JavaScript
 npm install angular-number-picker --save
 ```
 
+### via script ###
+
+```html
+<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="node_modules/angular-number-picker/dist/angular-number-picker.min.js"></script>
+```
+
+## Import ##
+
+### via ES2015 ###
+
+```javascript
+import {ngNumberPicker} from 'angular-baidu-map';
+```
+
+### via CommonJS ###
+
+```javascript
+var ngNumberPicker = require('angular-baidu-map').ngNumberPicker;
+```
+
+### via script ###
+
+```html
+<script type="text/javascript">
+    var ngNumberPicker = window.ngNumberPicker;
+</script>
+```
+
 ## Basic Usage ##
 
-- Include `angular-number-picker.js` into your `index.html` by using `script` tag, or you have other way to import dependency(For example: requirejs), like following:
-```HTML
-<script type="text/javascript" src="[location]/angular-number-picker.js"></script>
+**Add `ngNumberPicker` module as your angular app's dependency**
+
+```javascript
+var demo = angular.module('demo', [ngNumberPicker]);
 ```
-- Add `angularNumberPicker` module as your angular app's dependency
-```JavaScript
-var demo = angular.module('demo', ['angularNumberPicker']);
-```
-- Use `h-number` tag in your html
+
+>`ngNumberPicker` is the variable you get from above "Import" stage
+
+**Use `h-number` tag in your html**
+
 ```HTML
 <div ng-controller="DemoController">
     <h-number value="input.num" min="2" max="10" step="1" change="onChanged()"></h-number>
 </div>
 ```
-- Writing `DemoController`
-```JavaScript
+
+**Writing `DemoController`**
+
+```javascript
 demo.controller('DemoController', ['$scope', function($scope) {
    $scope.input = {
             num: 0
@@ -109,19 +143,23 @@ The `active` class will be added to the `input-group-addon` button, while touchi
 ## run demo locally ##
 
 ### Install npm dependency ###
-```Shell
+
+```bash
 npm install
 ```
 
 ### Install bower dependency ###
-```Shell
+
+```bash
 bower install
 ```
 
 ### run demo ###
 ```Shell
-gulp demo
+npm start
 ```
+
+>I will launch a debug server at [http://localhost:8000/](http://localhost:8000/)
 
 
 ## LICENSE ##

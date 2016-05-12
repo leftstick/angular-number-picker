@@ -1,6 +1,5 @@
-'use strict';
 
-var demo = angular.module('demo', ['angularNumberPicker']);
+var demo = angular.module('demo', [window.ngNumberPicker]);
 
 demo.controller('DemoController', [
     '$scope',
