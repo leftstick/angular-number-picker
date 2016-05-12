@@ -53,13 +53,13 @@ npm install angular-number-picker --save
 ### via ES2015 ###
 
 ```javascript
-import {ngNumberPicker} from 'angular-baidu-map';
+import {ngNumberPicker} from 'angular-number-picker';
 ```
 
 ### via CommonJS ###
 
 ```javascript
-var ngNumberPicker = require('angular-baidu-map').ngNumberPicker;
+var ngNumberPicker = require('angular-number-picker').ngNumberPicker;
 ```
 
 ### via script ###
