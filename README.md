@@ -116,6 +116,7 @@ demo.controller('DemoController', ['$scope', function($scope) {
 | step | Number | No | The step value for the operation. 1 by default|
 | singular | String | No | Label to be included after value when value is 1|
 | plural | String | No | Label to be included after value when value is not 1|
+| unitPosition | String | No | where to place the singular/plural. Available options: `left`, `right`. `right` by default. |
 | change | Function | No | Function to be called while number is changed|
 
 ## build-in class ##
@@ -135,6 +136,14 @@ The wrapper class for the number area at the center
 ### `active` ###
 
 The `active` class will be added to the `input-group-addon` button, while touching them. So it's possible to implement your own behavior.
+
+### `picker-unit-left` ###
+
+The `picker-unit-left` class will be added to the left `unit` span
+
+### `picker-unit-right` ###
+
+The `picker-unit-right` class will be added to the right `unit` span
 
 
 > It's easy to implement those classes to achieve your own UI

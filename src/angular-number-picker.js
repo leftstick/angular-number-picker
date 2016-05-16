@@ -9,7 +9,7 @@
  *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
  *
  *  @author  Howard.Zuo
- *  @date    May 12th, 2016
+ *  @date    May 16th, 2016
  *
  */
 
@@ -62,6 +62,7 @@ export const ngNumberPicker = (function() {
                 value: '=',
                 singular: '@',
                 plural: '@',
+                unitPosition: '@',
                 min: '@',
                 max: '@',
                 step: '@',
@@ -81,6 +82,7 @@ export const ngNumberPicker = (function() {
                 checkNumber(opts.max);
                 checkNumber(opts.step);
 
+
                 if (opts.min > $scope.value) {
                     $scope.value = opts.min;
                 }
@@ -88,6 +90,7 @@ export const ngNumberPicker = (function() {
                 $scope.$watch('value', function(newValue, oldValue) {
                     $scope.canDown = newValue > opts.min;
                     $scope.canUp = newValue < opts.max;
+                    $scope.unit = newValue === 1 ? $scope.singular : $scope.plural;
 
                     if (newValue !== oldValue) {
                         $scope.change();
@@ -167,7 +170,7 @@ export const ngNumberPicker = (function() {
                 });
 
             },
-            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">-</span><label class="form-control">{{ value }} {{value === 1 ? singular : plural}}</label><span class="input-group-addon" type="up" ng-disabled="!canUp">+</span></div>'
+            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">-</span><label class="form-control"><span class="picker-unit-left" ng-if="unitPosition === \'left\' && unit">{{ unit }}</span>{{ value }}<span class="picker-unit-right" ng-if="unitPosition !== \'left\' && unit">{{ unit }}</span></label><span class="input-group-addon" type="up" ng-disabled="!canUp">+</span></div>'
         };
     };
 

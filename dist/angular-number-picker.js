@@ -114,6 +114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                value: '=',
 	                singular: '@',
 	                plural: '@',
+	                unitPosition: '@',
 	                min: '@',
 	                max: '@',
 	                step: '@',
@@ -140,6 +141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                $scope.$watch('value', function (newValue, oldValue) {
 	                    $scope.canDown = newValue > opts.min;
 	                    $scope.canUp = newValue < opts.max;
+	                    $scope.unit = newValue === 1 ? $scope.singular : $scope.plural;
 
 	                    if (newValue !== oldValue) {
 	                        $scope.change();
@@ -218,7 +220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    addon.off('touchstart touchend click');
 	                });
 	            },
-	            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">-</span><label class="form-control">{{ value }} {{value === 1 ? singular : plural}}</label><span class="input-group-addon" type="up" ng-disabled="!canUp">+</span></div>'
+	            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">-</span><label class="form-control"><span class="picker-unit-left" ng-if="unitPosition === \'left\' && unit">{{ unit }}</span>{{ value }}<span class="picker-unit-right" ng-if="unitPosition !== \'left\' && unit">{{ unit }}</span></label><span class="input-group-addon" type="up" ng-disabled="!canUp">+</span></div>'
 	        };
 	    };
 
@@ -236,7 +238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      *       <h-number value="input.num" min="1" max="10" step="1" change="onChange()"></h-number>
 	      *
 	      *  @author  Howard.Zuo
-	      *  @date    May 12th, 2016
+	      *  @date    May 16th, 2016
 	      *
 	      */
 
