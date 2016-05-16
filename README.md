@@ -116,7 +116,7 @@ demo.controller('DemoController', ['$scope', function($scope) {
 | step | Number | No | The step value for the operation. 1 by default|
 | singular | String | No | Label to be included after value when value is 1|
 | plural | String | No | Label to be included after value when value is not 1|
-| unitPosition | String | No | where to place the singular/plural. Available options: `left`, `right`. `right` by default. |
+| unit-position | String | No | where to place the singular/plural. Available options: `left`, `right`. `right` by default. |
 | change | Function | No | Function to be called while number is changed|
 
 ## build-in class ##
