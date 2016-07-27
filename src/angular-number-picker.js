@@ -100,6 +100,10 @@ export const ngNumberPicker = (function() {
 
                 var changeNumber = function($event) {
                     var type = getType($event);
+
+                    //cast existing value to number, so += will really increment decimal number
+                    $scope.value = Number($scope.value);
+
                     if (type === 'up') {
                         if ($scope.value >= opts.max) {
                             return;
