@@ -87,6 +87,7 @@ export const ngNumberPicker = (function() {
 
         return {
             restrict: 'E',
+            transclude: true,
             scope: {
                 value: '=',
                 singular: '@',
@@ -199,7 +200,7 @@ export const ngNumberPicker = (function() {
                 });
 
             },
-            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">-</span><label class="form-control"><span class="picker-unit-left" ng-if="unitPosition === \'left\' && unit">{{ unit }}</span>{{ value }}<span class="picker-unit-right" ng-if="unitPosition !== \'left\' && unit">{{ unit }}</span></label><span class="input-group-addon" type="up" ng-disabled="!canUp">+</span></div>'
+            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">-</span><label class="form-control"><span class="picker-unit-left" ng-if="unitPosition === \'left\' && unit">{{ unit }}</span><ng-transclude>{{ value }}</ng-transclude><span class="picker-unit-right" ng-if="unitPosition !== \'left\' && unit">{{ unit }}</span></label><span class="input-group-addon" type="up" ng-disabled="!canUp">+</span></div>'
         };
     };
 

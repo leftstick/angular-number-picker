@@ -88,6 +88,16 @@ var demo = angular.module('demo', [ngNumberPicker]);
 </div>
 ```
 
+**You can use transclusion, too**
+
+```HTML
+<div ng-controller="DemoController">
+    <h-number value="input.num" min="2" max="10" step="1" change="onChanged()">
+        <input type="text" ng-model="input.num">
+    </h-number>
+</div>
+```
+
 **Writing `DemoController`**
 
 ```javascript
