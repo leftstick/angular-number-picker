@@ -15,7 +15,36 @@
 
 import * as ng from 'angular';
 
+const isNull = obj => obj === null || obj === undefined;
+
+const polyfill = function() {
+    if (typeof Object.assign !== 'function') {
+        Object.assign = function(target) {
+
+            // We must check against these specific cases.
+            if (isNull(target)) {
+                throw new TypeError('Cannot convert undefined or null to object');
+            }
+
+            var output = Object(target);
+            for (var index = 1; index < arguments.length; index++) {
+                var source = arguments[index];
+                if (!isNull(source)) {
+                    for (var nextKey in source) {
+                        if (source.hasOwnProperty(nextKey)) {
+                            output[nextKey] = source[nextKey];
+                        }
+                    }
+                }
+            }
+            return output;
+        };
+    }
+};
+
 export const ngNumberPicker = (function() {
+
+    polyfill();
 
     let name = 'ngNumberPicker';
 
