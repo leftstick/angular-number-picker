@@ -6,3 +6,6 @@ node_modules/
 demo/angular-number-picker.js
 demo/angular-number-picker.js.map
 demo/bower/
+
+#osx
+.DS_Store
