@@ -154,6 +154,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        return {
 	            restrict: 'E',
+	            transclude: true,
 	            scope: {
 	                value: '=',
 	                singular: '@',
@@ -194,6 +195,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	                var changeNumber = function changeNumber($event) {
 	                    var type = getType($event);
+	
+	                    //cast existing value to number, so += will really increment decimal number
+	                    $scope.value = Number($scope.value);
+	
 	                    if (type === 'up') {
 	                        if ($scope.value >= opts.max) {
 	                            return;
@@ -264,7 +269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    addon.off('touchstart touchend click');
 	                });
 	            },
-	            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">-</span><label class="form-control"><span class="picker-unit-left" ng-if="unitPosition === \'left\' && unit">{{ unit }}</span>{{ value }}<span class="picker-unit-right" ng-if="unitPosition !== \'left\' && unit">{{ unit }}</span></label><span class="input-group-addon" type="up" ng-disabled="!canUp">+</span></div>'
+	            template: '<div class="input-group"><span class="input-group-addon" type="down" ng-disabled="!canDown">-</span><label class="form-control"><span class="picker-unit-left" ng-if="unitPosition === \'left\' && unit">{{ unit }}</span><ng-transclude>{{ value }}</ng-transclude><span class="picker-unit-right" ng-if="unitPosition !== \'left\' && unit">{{ unit }}</span></label><span class="input-group-addon" type="up" ng-disabled="!canUp">+</span></div>'
 	        };
 	    };
 	
